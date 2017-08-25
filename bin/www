@@ -5,7 +5,7 @@
  */
 
 var app = require('../app');
-var debug = require('debug')('node-rest-auth:server');
+var debug = require('debug')('iok-express:server');
 var http = require('http');
 
 /**
@@ -21,6 +21,7 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+const mosca = require('../broker/mosca.js')(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
