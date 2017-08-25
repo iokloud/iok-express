@@ -1,4 +1,4 @@
-const debug = require('debug')('node-mqtt:stats');
+const debug = require('debug')('iok-express:stats');
 
 class Stats {
     constructor() {

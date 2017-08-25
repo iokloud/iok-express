@@ -1,4 +1,4 @@
-const debug = require('debug')('node-mqtt:mosca');
+const debug = require('debug')('iok-express:mosca');
 const mosca = require('mosca');
 const events = require('./moscaEvents.js');
 const mqttPort = process.env.MQTT_PORT || 1883;

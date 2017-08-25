@@ -1,4 +1,4 @@
-const debug = require('debug')('ambiensvr-mqtt:mosca:events');
+const debug = require('debug')('iok-express:mosca:events');
 const stats = require('./stats.js');
 
 module.exports.onClientConnected = (client) => {
