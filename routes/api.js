@@ -7,6 +7,7 @@ var jwt = require('jsonwebtoken');
 var router = express.Router();
 var User = require("../models/user");
 var Book = require("../models/book");
+var Thing = require("../models/thing");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -49,6 +50,43 @@ router.post('/signin', function(req, res) {
     }
   });
 });
+
+router.post('/thing', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    console.log(req.body);
+    var newThing = new Thing({
+      name: req.body.name,
+	  type: req.body.type,
+	  clientid: req.body.clientid,
+	  username: req.body.username,
+	  password: req.body.password
+    });
+
+    newThing.save(function(err) {
+      if (err) {
+        return res.json({success: false, msg: 'Save thing failed.'});
+      }
+      res.json({success: true, msg: 'Successful created new thing.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.get('/thing', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    Thing.find(function (err, things) {
+      if (err) return next(err);
+      res.json(things);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+
 
 router.post('/book', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);

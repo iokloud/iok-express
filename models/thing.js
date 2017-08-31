@@ -24,4 +24,4 @@ var ThingSchema = new Schema({
   }
 });
 
-module.exports = mongoose.model('Thing', BookSchema);
+module.exports = mongoose.model('Thing', ThingSchema);
