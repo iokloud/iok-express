@@ -1,4 +1,4 @@
 module.exports = {
-  'secret':'nodeauthsecret',
-  'database': 'mongodb://localhost/node-auth'
+  'secret':'iokexpresssecret',
+  'database': 'mongodb://localhost/iok-express'
 };
