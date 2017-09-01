@@ -1,4 +1,7 @@
-<img src="https://github.com/iokloud/iok-express/blob/master/iokloud-logo.png" width="200"/>
+![iok-express banner](iokloud-logo.png)
+
+==
+<img src="https://github.com/iokloud/iok-express/blob/master/iokloud-logo.png" width="350" align="center"/>
 
 # iok-express
 ### a IoT platform based on expressjs, passportjs, mosca and mongodb.
