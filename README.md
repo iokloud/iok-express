@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/iokloud/iok-express/iokloud-logo.png" width="200"/>
+  <img src="https://github.com/iokloud/iok-express/blob/master/iokloud-logo.png" width="300"/>
 </p>
 
 # iok-express
