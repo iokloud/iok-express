@@ -4,7 +4,8 @@ var Schema = mongoose.Schema;
 var ThingSchema = new Schema({
   clientid: {
     type: String,
-    required: true
+    required: true,
+	unique: true
   },
   name: {
     type: String,
@@ -12,6 +13,7 @@ var ThingSchema = new Schema({
   },
   username: {
     type: String,
+	unique: true,
     required: true
   },
   password: {
