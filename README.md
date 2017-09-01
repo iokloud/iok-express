@@ -1,3 +1,5 @@
+![img](https://github.com/iokloud/iok-express/blob/master/iokloud-logo.svg)
+
 # iok-express
 ### a IoT platform based on expressjs, passportjs, mosca and mongodb.
 
