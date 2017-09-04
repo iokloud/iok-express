@@ -57,18 +57,24 @@ router.post('/thing', passport.authenticate('jwt', { session: false}), function(
     console.log(req.body);
     var newThing = new Thing({
       name: req.body.name,
+	  location: req.body.location,
+	  description: req.body.description,
 	  type: req.body.type,
-	  createat: Date.now,
-	  clientid: uniqid(),
-	  username: uniqid(),
-	  password: uniqid()
+	  createat: Date.now(),
+	  clientid: uniqid(),	//req.body.clientid,
+	  username: uniqid(),	//req.body.username,
+	  password: uniqid()	//req.body.password
     });
 
     newThing.save(function(err) {
       if (err) {
-        return res.json({success: false, msg: 'Save thing failed.'});
+        console.log('Save thing failed.');
+		console.log(err);
+		return res.json({success: false, msg: 'Save thing failed.'});
       }
-      res.json({success: true, msg: 'Successful created new thing.'});
+      console.log('Successful created new thing.');
+	  console.log(newThing);
+	  res.json({success: true, msg: 'Successful created new thing.'});
     });
   } else {
     return res.status(403).send({success: false, msg: 'Unauthorized.'});

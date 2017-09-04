@@ -11,6 +11,12 @@ var ThingSchema = new Schema({
     type: String,
     required: true
   },
+  location:	{
+	  type: String
+  },
+  description:	{
+	  type: String
+  },
   username: {
     type: String,
     required: true
