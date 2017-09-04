@@ -7,7 +7,6 @@ var jwt = require('jsonwebtoken');
 var uniqid = require('uniqid');
 var router = express.Router();
 var User = require("../models/user");
-var Book = require("../models/book");
 var Thing = require("../models/thing");
 
 router.post('/signup', function(req, res) {
@@ -59,9 +58,10 @@ router.post('/thing', passport.authenticate('jwt', { session: false}), function(
     var newThing = new Thing({
       name: req.body.name,
 	  type: req.body.type,
+	  createat: Date.now,
 	  clientid: uniqid(),
-	  username: req.body.username,
-	  password: req.body.password
+	  username: uniqid(),
+	  password: uniqid()
     });
 
     newThing.save(function(err) {
@@ -87,41 +87,6 @@ router.get('/thing', passport.authenticate('jwt', { session: false}), function(r
   }
 });
 
-
-
-router.post('/book', passport.authenticate('jwt', { session: false}), function(req, res) {
-  var token = getToken(req.headers);
-  if (token) {
-    console.log(req.body);
-    var newBook = new Book({
-      isbn: req.body.isbn,
-      title: req.body.title,
-      author: req.body.author,
-      publisher: req.body.publisher
-    });
-
-    newBook.save(function(err) {
-      if (err) {
-        return res.json({success: false, msg: 'Save book failed.'});
-      }
-      res.json({success: true, msg: 'Successful created new book.'});
-    });
-  } else {
-    return res.status(403).send({success: false, msg: 'Unauthorized.'});
-  }
-});
-
-router.get('/book', passport.authenticate('jwt', { session: false}), function(req, res) {
-  var token = getToken(req.headers);
-  if (token) {
-    Book.find(function (err, books) {
-      if (err) return next(err);
-      res.json(books);
-    });
-  } else {
-    return res.status(403).send({success: false, msg: 'Unauthorized.'});
-  }
-});
 
 getToken = function (headers) {
   if (headers && headers.authorization) {

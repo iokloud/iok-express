@@ -13,7 +13,6 @@ var ThingSchema = new Schema({
   },
   username: {
     type: String,
-	unique: true,
     required: true
   },
   password: {
@@ -23,6 +22,10 @@ var ThingSchema = new Schema({
   type: {
     type: String,
     required: true
+  },
+  createat:	{
+	  type: Date,
+	  required: true
   }
 });
 
