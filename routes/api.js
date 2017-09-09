@@ -57,13 +57,14 @@ router.post('/thing', passport.authenticate('jwt', { session: false}), function(
     console.log(req.body);
     var newThing = new Thing({
       name: req.body.name,
-	  location: req.body.location,
-	  description: req.body.description,
-	  type: req.body.type,
-	  createat: Date.now(),
+	  //location: req.body.location,
+	  //description: req.body.description,
+	  //type: req.body.type,
+	  //createat: Date.now(),
 	  clientid: uniqid(),	//req.body.clientid,
 	  username: uniqid(),	//req.body.username,
-	  password: uniqid()	//req.body.password
+	  password: uniqid()	//,  //req.body.password
+	  //config: req.body.config
     });
 
     newThing.save(function(err) {
@@ -92,6 +93,76 @@ router.get('/thing', passport.authenticate('jwt', { session: false}), function(r
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
+
+
+router.get('/thing/:clientid', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    console.log(req.body);
+	
+	Thing.findOne({clientid: req.params.clientid}, function(err, things) {
+    if (err) {
+        console.log('Quering thing failed.');
+		console.log(err);
+		return res.json({success: false, msg: 'Quering thing failed.'});
+      }
+	if (!things) {
+		console.log("ClientId Not found");
+		return res.status(403).send({success: false, msg: 'ClientID not found.'});
+	}  
+      console.log('Successful query.');
+	  res.json(things);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+router.put('/thing/:clientid', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    console.log(req.body);
+	
+	Thing.findOneAndUpdate({clientid: req.params.clientid}, req.body, {new: true}, function(err, doc) {
+    if (err) {
+        console.log('Save thing failed.');
+		console.log(err);
+		return res.json({success: false, msg: 'Save thing failed.'});
+      }
+	if (!doc) {
+		console.log("ClientId Not found");
+		return res.status(403).send({success: false, msg: 'ClientID not found.'});
+	}  
+      console.log('Successful created new thing.');
+	  res.json({success: true, msg: 'Successful updated thing.'});
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
+
+router.delete('/thing/:clientid', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+	Thing.findOneAndRemove({clientid: req.params.clientid}, function (err, doc) {
+    if (err) {
+        console.log(err);
+		res.send(err);
+    }
+    if (!doc) {
+		console.log("ClientId Not found");
+		return res.status(403).send({success: false, msg: 'ClientID not found.'});
+	}
+    
+    res.json({ message: 'Thing successfully deleted' });
+	});
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
+
 
 
 getToken = function (headers) {
