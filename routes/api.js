@@ -8,6 +8,7 @@ var uniqid = require('uniqid');
 var router = express.Router();
 var User = require("../models/user");
 var Thing = require("../models/thing");
+var broker = require("../broker/mosca.js");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
@@ -81,6 +82,7 @@ router.post('/thing', passport.authenticate('jwt', { session: false}), function(
     return res.status(403).send({success: false, msg: 'Unauthorized.'});
   }
 });
+
 
 router.get('/thing', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
