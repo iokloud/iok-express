@@ -1,5 +1,6 @@
 const debug = require('debug')('iok-express:mosca');
 const mosca = require('mosca');
+var config = require('../config/mosca.js');
 const events = require('./moscaEvents.js');
 const mqttPort = process.env.MQTT_PORT || 1883;
 var mongoose = require('mongoose');
@@ -7,26 +8,8 @@ var Thing = require("../models/thing");
 
 
 module.exports = (httpServer) => {
-    /*
-     const pubsubsettings = {
-     type: 'redis',
-     redis: require('redis'),
-     db: 12,
-     port: 6379,
-     return_buffers: true, // to handle binary payloads
-     host: "localhost"
-     };
-     */
-
-    const moscaSettings = {
-        port: parseInt(mqttPort),
-        backend: {},
-        persistence: {
-            factory: mosca.persistence.Memory
-        }
-    };
-
-    const server = new mosca.Server(moscaSettings);	
+    
+    const server = new mosca.Server(config);	
 	
     server.attachHttpServer(httpServer);
     server.on('ready', () => {

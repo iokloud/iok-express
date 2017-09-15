@@ -8,7 +8,6 @@ var uniqid = require('uniqid');
 var router = express.Router();
 var User = require("../models/user");
 var Thing = require("../models/thing");
-var broker = require("../broker/mosca.js");
 
 router.post('/signup', function(req, res) {
   if (!req.body.username || !req.body.password) {
