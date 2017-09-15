@@ -14,19 +14,14 @@ In light of the possibilities that internet of things is offering tech companies
 ## Steps to run locally
 
 firstly besure Mongodb is running on localhost:27017
-
-Install in linux:
-```
-$ npm install -g mongodb
-```
-
-Then, in a new terminal window, start the MongoDB daemon:
+for Mongodb installation refer to [https://docs.mongodb.com/manual/administration/install-community/]
+Then, in a new terminal window, start the MongoDB daemon to start mongodb server;
 ```
 $ sudo mongod
 ```
 
 
-for downloading and installing this git;
+in new terminal window, download and install iok-express git;
 ```
 $ git clone https://github.com/iokloud/iok-express/
 
@@ -53,7 +48,9 @@ DELETE /thing/:clientid
 
 test our secure REST API using <a href="https://www.getpostman.com/docs/postman/launching_postman/installation_and_updates">Postman</a> REST Client or Curl command. You can install Postman for Chrome extension.
 Now, open Postman then enters method, address (http://localhost:3000/api/signup) and body parameters for create or signup new user. After click Send button and successfully created a new user, you should see this message.
+
 ![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-signup.png)
+
 
 Next, we have to test if REST API for Thing resource is restricted for the authorized user only. Change method to "GET" and API endpoint to "http://localhost:3000/api/thing" then click Send button. You should see this message on the Postman result.
 
@@ -65,6 +62,7 @@ To access the Thing resource, we have to log in using previously registered user
 If a login is successful, we should get a JWT token like below.
 ![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-signin.png)
 
+
 Just copy and paste the token value for use in request headers of restricted Thing resource. Now, do previous get Thing and add this header.
 
 If you see the blank array in response, then you are authorized to use Thing resources because we have not created any thing. Now, you can do the same thing for posting new Thing.
@@ -74,6 +72,5 @@ for invoking list of created things as locally;
 ```
 GET http://localhost:3000/api/thing/
 ```
-
 
 
