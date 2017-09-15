@@ -10,9 +10,39 @@ The gap between the device sensors and data networks is filled by an IoT Platfor
 
 In light of the possibilities that internet of things is offering tech companies has started capitalizing it. There are many IoT platforms available now that provide option to deploy internet of things applications on the go. this is a try to have your own IoT platform.
 
-### Steps to run locally
 
-firstly besure mongodb is running on localhost:27017
+## IOK-Express API
+The Thing API defines a set of services to create, update or control any things. 
+
+```
+POST /signup
+POST /signin
+POST /thing
+GET /thing
+GET /thing/:clientid
+PUT /thing/:clientid
+DELETE /thing/:clientid
+```
+
+test our secure REST API using <a href="https://www.getpostman.com/docs/postman/launching_postman/installation_and_updates">Postman</a> REST Client or Curl command. You can install Postman for Chrome extension.
+Now, open Postman then enters method, address (http://localhost:3000/api/signup) and body parameters for create or signup new user. After click Send button and successfully created a new user, you should see this message.
+
+
+## Steps to run locally
+
+firstly besure Mongodb is running on localhost:27017
+
+Install in linux:
+```
+$ npm install -g mongodb
+```
+
+Then, in a new terminal window, start the MongoDB daemon:
+```
+$ sudo mongod
+```
+
+
 
 $ git clone https://github.com/iokloud/iok-express/
 
@@ -22,6 +52,11 @@ $ npm install
 
 $ npm start
 
+
+for invoking the list of oyur created things as locally;
+```
+GET http://localhost/thing/:id
+```
 
 
 
