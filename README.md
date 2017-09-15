@@ -26,7 +26,7 @@ DELETE /thing/:clientid
 
 test our secure REST API using <a href="https://www.getpostman.com/docs/postman/launching_postman/installation_and_updates">Postman</a> REST Client or Curl command. You can install Postman for Chrome extension.
 Now, open Postman then enters method, address (http://localhost:3000/api/signup) and body parameters for create or signup new user. After click Send button and successfully created a new user, you should see this message.
-![Postman usage in IOK](https://github.com/iokloud/Documentation/images/iok-express_postman-signup.png)
+![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-signup.png)
 
 ## Steps to run locally
 
