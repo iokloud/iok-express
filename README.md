@@ -15,8 +15,8 @@ In light of the possibilities that internet of things is offering tech companies
 
 ## Features
 * Scalable
+* HTTP and MQTT connections together.
 * MQTT 3.1 and 3.1.1 compliant.
-* QoS 0 and QoS 1.
 * Various storage options for QoS 1 offline packets, and subscriptions.
 * Usable inside ANY other Node.js app.
 
@@ -24,7 +24,7 @@ In light of the possibilities that internet of things is offering tech companies
 
 Firstly besure Mongodb is running on localhost:27017
 for Mongodb installation refer to [https://docs.mongodb.com/manual/administration/install-community/]
-Then, in a new terminal window, start the MongoDB daemon to start mongodb server;
+Then, in a new terminal window, start the MongoDB daemon to start mongodb server.
 
 
 Download and install iok-express git;
@@ -91,3 +91,37 @@ If you see the blank array in response, then you are authorized to use Thing res
 
 
 
+### Learn more
+
+
+You can find a test version of mosca at test.iokloud.com as soon as possible.
+
+If you find iok-express useful, consider supporting the project by buying a support package
+from [me](http://twitter.com/iokloud) by writing an email to iokloud.com@gmail.com.
+
+Check out our [showcase](https://github.com/iokloud/iok-express/wiki/IOK-Express-Showcases) wiki
+page! Feel free to add yourself! :)
+
+## Security Issues
+
+__IOK-Express__ sits between your system and the devices: this is a tough role, and we did our best to secure your systems.
+However, you might find a security issue: in that case, email @iokoud at iokloud.com@gmail.com
+
+
+## Feedback
+
+Use the [issue tracker](https://github.com/iokloud/iok-express/issues) for bugs.
+[Tweet](http://twitter.com/iokloud) us for any idea that can improve the project.
+
+
+## Links
+
+* [Mosca](http://github.com/mcollina/mosca)
+* [Expressjs](https://expressjs.com/)
+* [Passport](http://passportjs.org/)
+* [MQTT protocol](http://mqtt.org)
+* [MQTT.js](http://github.com/adamvr/MQTT.js)
+
+## Authors
+
+[Hadi Mahdavi](http://twitter.com/iokloud)
