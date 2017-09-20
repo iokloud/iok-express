@@ -54,19 +54,25 @@ router.post('/signin', function(req, res) {
 router.post('/thing', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
   if (token) {
-    console.log(req.body);
+    console.log(req.user);
+    var decoded = jwt.decode(token, config.secret);
+	console.log('decode');
+	console.log(decoded);
     var newThing = new Thing({
       name: req.body.name,
-	  //location: req.body.location,
-	  //description: req.body.description,
-	  //type: req.body.type,
-	  //createat: Date.now(),
+	  owner: decoded._doc.username,
 	  clientid: uniqid(),	//req.body.clientid,
-	  username: uniqid(),	//req.body.username,
-	  password: uniqid()	//,  //req.body.password
-	  //config: req.body.config
+	  config: {
+		  type: req.body.type,
+		  createat: Date.now(),
+		  username: uniqid(),	//req.body.username,
+		  password: uniqid()	//,  //req.body.password
+	  }
     });
 
+	console.log("newThing");
+	console.log(newThing);
+	
     newThing.save(function(err) {
       if (err) {
         console.log('Save thing failed.');
@@ -85,8 +91,12 @@ router.post('/thing', passport.authenticate('jwt', { session: false}), function(
 
 router.get('/thing', passport.authenticate('jwt', { session: false}), function(req, res) {
   var token = getToken(req.headers);
+  var decoded = jwt.decode(token, config.secret);
+  console.log("req.user");
+  console.log(decoded);
   if (token) {
-    Thing.find(function (err, things) {
+    
+	Thing.find({owner: decoded._doc.username},function (err, things) {
       if (err) return next(err);
       res.json(things);
     });
@@ -95,6 +105,19 @@ router.get('/thing', passport.authenticate('jwt', { session: false}), function(r
   }
 });
 
+
+router.post('/thinglist', passport.authenticate('jwt', { session: false}), function(req, res) {
+  var token = getToken(req.headers);
+  if (token) {
+    
+	Thing.find({owner: req.user.username},function (err, things) {
+      if (err) return next(err);
+      res.json(things);
+    });
+  } else {
+    return res.status(403).send({success: false, msg: 'Unauthorized.'});
+  }
+});
 
 
 router.get('/thing/:clientid', passport.authenticate('jwt', { session: false}), function(req, res) {
