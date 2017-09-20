@@ -49,6 +49,13 @@ nodemon server.js
 ```
 
 
+
+## Tutorial
+
+You can find a step by step <a href="https://github.com/iokloud/iok-express/wiki/Tutorial">tutorial</a> in wiki page .
+
+
+
 ## IOK-Express API
 
 The Thing API defines a set of services to create, update or control any things. 
@@ -69,9 +76,6 @@ GET http://localhost:3000/api/thing/
 ```
 
 
-##Tutorial
-
-You can find a step by step <a href="https://github.com/iokloud/iok-express/wiki/Tutorial">tutorial</a> in wiki page .
 
 
 
