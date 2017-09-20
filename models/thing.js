@@ -3,6 +3,14 @@ var Schema = mongoose.Schema;
 //ObjectId = Schema.ObjectId;
 
 var ConfigSchema = new Schema({
+  username: {
+	type: String,
+	required: true
+  },
+  password: {
+	type: String,
+	required: true
+  },
   type: {
     type: String,
     required: true
@@ -25,6 +33,10 @@ var ConfigSchema = new Schema({
 });
 
 var ThingSchema = new Schema({
+  owner: {
+	type: String,
+	required: true,
+  },
   clientid: {
     type: String,
     required: true,
@@ -34,16 +46,7 @@ var ThingSchema = new Schema({
     type: String,
     required: true
   },
-  username: {
-    type: String,
-    required: true
-  },
-  password: {
-    type: String,
-    required: true
-  }
-  //},
-  //config:	[ConfigSchema],
+  config:	[ConfigSchema]//,
   //status:	[StatusSchema]
 });
 
