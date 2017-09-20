@@ -14,40 +14,40 @@ router.post('/signup', function(req, res) {
         res.json({
             success: false,
             msg: 'Please pass username and password.'
-        });
-    } else {
+		});
+		} else {
         var newUser = new User({
             username: req.body.username,
             password: req.body.password
-        });
+		});
         // save the user
         newUser.save(function(err) {
             if (err) {
                 return res.json({
                     success: false,
                     msg: 'Username already exists.'
-                });
-            }
+				});
+			}
             res.json({
                 success: true,
                 msg: 'Successful created new user.'
-            });
-        });
-    }
+			});
+		});
+	}
 });
 
 router.post('/signin', function(req, res) {
     User.findOne({
         username: req.body.username
-    }, function(err, user) {
+		}, function(err, user) {
         if (err) throw err;
-
+		
         if (!user) {
             res.status(401).send({
                 success: false,
                 msg: 'Authentication failed. User not found.'
-            });
-        } else {
+			});
+			} else {
             // check if password matches
             user.comparePassword(req.body.password, function(err, isMatch) {
                 if (isMatch && !err) {
@@ -57,21 +57,21 @@ router.post('/signin', function(req, res) {
                     res.json({
                         success: true,
                         token: 'JWT ' + token
-                    });
-                } else {
+					});
+					} else {
                     res.status(401).send({
                         success: false,
                         msg: 'Authentication failed. Wrong password.'
-                    });
-                }
-            });
-        }
-    });
+					});
+				}
+			});
+		}
+	});
 });
 
 router.post('/thing', passport.authenticate('jwt', {
     session: false
-}), function(req, res) {
+	}), function(req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, config.secret);
@@ -84,12 +84,12 @@ router.post('/thing', passport.authenticate('jwt', {
                 createat: Date.now(),
                 username: uniqid(),
                 password: uniqid()
-            }
-        });
-
+			}
+		});
+		
         console.log("newThing");
         console.log(newThing);
-
+		
         newThing.save(function(err) {
             if (err) {
                 console.log('Save thing failed.');
@@ -97,156 +97,156 @@ router.post('/thing', passport.authenticate('jwt', {
                 return res.json({
                     success: false,
                     msg: 'Save thing failed.'
-                });
-            }
+				});
+			}
             console.log('Successful created new thing.');
             console.log(newThing);
             res.json({
                 success: true,
                 msg: 'Successful created new thing.'
-            });
-        });
-    } else {
+			});
+		});
+		} else {
         return res.status(403).send({
             success: false,
             msg: 'Unauthorized.'
-        });
-    }
+		});
+	}
 });
 
 
 router.get('/thing', passport.authenticate('jwt', {
     session: false
-}), function(req, res) {
+	}), function(req, res) {
     var token = getToken(req.headers);
     var decoded = jwt.decode(token, config.secret);
     if (token) {
-
+		
         Thing.find({
             owner: decoded._doc.username
-        }, function(err, things) {
+			}, function(err, things) {
             if (err) return next(err);
             res.json(things);
-        });
-    } else {
+		});
+		} else {
         return res.status(403).send({
             success: false,
             msg: 'Unauthorized.'
-        });
-    }
+		});
+	}
 });
 
 
 
 router.get('/thing/:clientid', passport.authenticate('jwt', {
     session: false
-}), function(req, res) {
+	}), function(req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, config.secret);
         Thing.findOne({
             clientid: req.params.clientid,
             owner: decoded._doc.username
-        }, function(err, things) {
+			}, function(err, things) {
             if (err) {
                 console.log('Quering thing failed.');
                 console.log(err);
                 return res.json({
                     success: false,
                     msg: 'Quering thing failed.'
-                });
-            }
+				});
+			}
             if (!things) {
                 console.log("ClientId Not found");
                 return res.status(403).send({
                     success: false,
                     msg: 'ClientID not found.'
-                });
-            }
+				});
+			}
             console.log('Successful query.');
             res.json(things);
-        });
-    } else {
+		});
+		} else {
         return res.status(403).send({
             success: false,
             msg: 'Unauthorized.'
-        });
-    }
+		});
+	}
 });
 
 router.put('/thing/:clientid', passport.authenticate('jwt', {
     session: false
-}), function(req, res) {
+	}), function(req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, config.secret);
         Thing.findOneAndUpdate({
             clientid: req.params.clientid,
             owner: decoded._doc.username
-        }, req.body, {
+			}, req.body, {
             new: true
-        }, function(err, doc) {
+			}, function(err, doc) {
             if (err) {
                 console.log('Save thing failed.');
                 console.log(err);
                 return res.json({
                     success: false,
                     msg: 'Save thing failed.'
-                });
-            }
+				});
+			}
             if (!doc) {
                 console.log("ClientId Not found");
                 return res.status(403).send({
                     success: false,
                     msg: 'ClientID not found.'
-                });
-            }
+				});
+			}
             console.log('Successful created new thing.');
             res.json({
                 success: true,
                 msg: 'Successful updated thing.'
-            });
-        });
-    } else {
+			});
+		});
+		} else {
         return res.status(403).send({
             success: false,
             msg: 'Unauthorized.'
-        });
-    }
+		});
+	}
 });
 
 
 router.delete('/thing/:clientid', passport.authenticate('jwt', {
     session: false
-}), function(req, res) {
+	}), function(req, res) {
     var token = getToken(req.headers);
     if (token) {
         var decoded = jwt.decode(token, config.secret);
         Thing.findOneAndRemove({
             clientid: req.params.clientid,
             owner: decoded._doc.username
-        }, function(err, doc) {
+			}, function(err, doc) {
             if (err) {
                 console.log(err);
                 res.send(err);
-            }
+			}
             if (!doc) {
                 console.log("ClientId Not found");
                 return res.status(403).send({
                     success: false,
                     msg: 'ClientID not found.'
-                });
-            }
+				});
+			}
             res.json({
                 message: 'Thing successfully deleted'
-            });
-        });
-    } else {
+			});
+		});
+		} else {
         return res.status(403).send({
             success: false,
             msg: 'Unauthorized.'
-        });
-    }
+		});
+	}
 });
 
 
@@ -256,12 +256,12 @@ getToken = function(headers) {
         var parted = headers.authorization.split(' ');
         if (parted.length === 2) {
             return parted[1];
-        } else {
+			} else {
             return null;
-        }
-    } else {
+		}
+		} else {
         return null;
-    }
+	}
 };
 
 module.exports = router;

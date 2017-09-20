@@ -2,7 +2,9 @@
 
 # iok-express
 
-### a IoT platform based on expressjs, passportjs, mosca and mongodb.
+## About
+
+#### iok-express is IoT platform based on expressjs, passportjs, mosca and mongodb.
 
 In simple words the purpose of any IoT device is to connect with other IoT devices and applications (cloud-based mostly) to relay information using internet transfer protocols.[http://internetofthingswiki.com]
 
@@ -10,6 +12,13 @@ The gap between the device sensors and data networks is filled by an IoT Platfor
 
 In light of the possibilities that internet of things is offering tech companies has started capitalizing it. There are many IoT platforms available now that provide option to deploy internet of things applications on the go. this is a try to have your own IoT platform.
 
+
+## Features
+* Scalable
+* MQTT 3.1 and 3.1.1 compliant.
+* QoS 0 and QoS 1.
+* Various storage options for QoS 1 offline packets, and subscriptions.
+* Usable inside ANY other Node.js app.
 
 ## Steps to run locally
 
@@ -19,16 +28,23 @@ Then, in a new terminal window, start the MongoDB daemon to start mongodb server
 
 
 Download and install iok-express git;
+```bash
+git clone https://github.com/iokloud/iok-express/
+
+cd iok-express
+
+npm install
 ```
-$ git clone https://github.com/iokloud/iok-express/
 
-$ cd iok-express
+for runing api service you can use one of these commands
 
-$ npm install
+``` bash
+npm start
+```
 
-$ npm start
 or
-$ nodemon server.js
+```bash
+nodemon server.js
 ```
 
 
