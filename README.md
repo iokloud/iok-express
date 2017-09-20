@@ -14,10 +14,11 @@ In light of the possibilities that internet of things is offering tech companies
 
 
 ## Features
-* Scalable
+
+* Simple and Scalable.
 * HTTP and MQTT connections together.
 * MQTT 3.1 and 3.1.1 compliant.
-* Various storage options for QoS 1 offline packets, and subscriptions.
+* Sercured with authentication and passprot stertegies..
 * Usable inside ANY other Node.js app.
 
 ## Steps to run locally
@@ -49,6 +50,7 @@ nodemon server.js
 
 
 ## IOK-Express API
+
 The Thing API defines a set of services to create, update or control any things. 
 
 ```
@@ -67,34 +69,16 @@ GET http://localhost:3000/api/thing/
 ```
 
 
-test our secure REST API using <a href="https://www.getpostman.com/docs/postman/launching_postman/installation_and_updates">Postman</a> REST Client or Curl command. You can install Postman for Chrome extension.
-Now, open Postman then enters method, address (http://localhost:3000/api/signup) and body parameters for create or signup new user. After click Send button and successfully created a new user, you should see this message.
+##Tutorial
 
-![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-signup.png)
-
-
-Next, we have to test if REST API for Thing resource is restricted for the authorized user only. Change method to "GET" and API endpoint to "http://localhost:3000/api/thing" then click Send button. You should see this message on the Postman result.
-
-```
-Unauthorized
-```
-
-To access the Thing resource, we have to log in using previously registered user. Change method to "POST" and endpoint to "http://localhost:3000/api/signin" then fill credentials like below screenshot.
-If a login is successful, we should get a JWT token like below.
-![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-signin.png)
-
-
-Just copy and paste the token value for use in request headers of restricted Thing resource. Now, do previous get Thing and add this header.
-
-If you see the blank array in response, then you are authorized to use Thing resources because we have not created any thing. Now, you can do the same thing for posting new Thing.
-![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-create-thing.png)
+You can find a step by step <a href="https://github.com/iokloud/iok-express/wiki/Tutorial">tutorial</a> in wiki page .
 
 
 
 ### Learn more
 
 
-You can find a test version of mosca at test.iokloud.com as soon as possible.
+You can find a test version of iok-express at test.iokloud.com as soon as possible.
 
 If you find iok-express useful, consider supporting the project by buying a support package
 from [me](http://twitter.com/iokloud) by writing an email to iokloud.com@gmail.com.
@@ -118,9 +102,11 @@ Use the [issue tracker](https://github.com/iokloud/iok-express/issues) for bugs.
 
 * [Mosca](http://github.com/mcollina/mosca)
 * [Expressjs](https://expressjs.com/)
+* [Mongodb](https://www.mongodb.com/)
 * [Passport](http://passportjs.org/)
 * [MQTT protocol](http://mqtt.org)
 * [MQTT.js](http://github.com/adamvr/MQTT.js)
+
 
 ## Authors
 
