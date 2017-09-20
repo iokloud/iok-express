@@ -23,7 +23,7 @@ IOK Express will enable you to put your IoT API services painless on your own se
 ## Steps to run locally
 
 Firstly besure Mongodb is running on localhost:27017
-for Mongodb installation refer to <a href="https://docs.mongodb.com/manual/administration/install-community/">MongoDB</a>
+for Mongodb installation refer to <a href="https://docs.mongodb.com/manual/administration/install-community/">MongoDB Doc</a>
 Then, in a new terminal window, start the MongoDB daemon to start mongodb server.
 
 
