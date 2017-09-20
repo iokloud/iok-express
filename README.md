@@ -13,15 +13,12 @@ In light of the possibilities that internet of things is offering tech companies
 
 ## Steps to run locally
 
-firstly besure Mongodb is running on localhost:27017
+Firstly besure Mongodb is running on localhost:27017
 for Mongodb installation refer to [https://docs.mongodb.com/manual/administration/install-community/]
 Then, in a new terminal window, start the MongoDB daemon to start mongodb server;
-```
-$ sudo mongod
-```
 
 
-in new terminal window, download and install iok-express git;
+Download and install iok-express git;
 ```
 $ git clone https://github.com/iokloud/iok-express/
 
@@ -30,6 +27,8 @@ $ cd iok-express
 $ npm install
 
 $ npm start
+or
+$ nodemon server.js
 ```
 
 
@@ -45,6 +44,12 @@ GET /thing/:clientid
 PUT /thing/:clientid
 DELETE /thing/:clientid
 ```
+
+Example: for invoking list of created things as locally;
+```
+GET http://localhost:3000/api/thing/
+```
+
 
 test our secure REST API using <a href="https://www.getpostman.com/docs/postman/launching_postman/installation_and_updates">Postman</a> REST Client or Curl command. You can install Postman for Chrome extension.
 Now, open Postman then enters method, address (http://localhost:3000/api/signup) and body parameters for create or signup new user. After click Send button and successfully created a new user, you should see this message.
@@ -68,9 +73,5 @@ Just copy and paste the token value for use in request headers of restricted Thi
 If you see the blank array in response, then you are authorized to use Thing resources because we have not created any thing. Now, you can do the same thing for posting new Thing.
 ![Postman usage in IOK](https://github.com/iokloud/Documentation/blob/master/images/iok-express_postman-create-thing.png)
 
-for invoking list of created things as locally;
-```
-GET http://localhost:3000/api/thing/
-```
 
 
