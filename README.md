@@ -4,7 +4,7 @@
 
 ## About
 
-#### [Are being completed...] iok-express is IoT platform based on node.js, expressjs, passportjs, mosca and mongodb.
+#### [Are being completed... It's in test] iok-express is IoT platform based on node.js, expressjs, passportjs, mosca and mongodb.
 
 The purpose of any IoT device is to connect with other IoT devices and applications to relay information using internet transfer protocols. The gap between the device sensors and data networks is filled by an IoT Platform.
 
