@@ -21,18 +21,12 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
-const mosca = require('../broker/mosca.js')(server);
+const ponte = require('../broker/ponte.js')(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
 
- 
-exports.Publish = function(message)	{
-mosca.publish(message, function() {
-  console.log('done!');
-});
 	
-}
 
  
 server.listen(port);
