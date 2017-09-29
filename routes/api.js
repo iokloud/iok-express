@@ -8,6 +8,8 @@ var uniqid = require('uniqid');
 var router = express.Router();
 var User = require("../models/user");
 var Thing = require("../models/thing");
+var www = require('../bin/www');
+
 
 router.post('/signup', function(req, res) {
     if (!req.body.username || !req.body.password) {
@@ -121,6 +123,14 @@ router.get('/thing', passport.authenticate('jwt', {
     var token = getToken(req.headers);
     var decoded = jwt.decode(token, config.secret);
     if (token) {
+		var message = {
+			topic: '/8d0rgh6p8j7utxebw/world',
+  payload: 'abcdef', // or a Buffer
+  qos: 0, // 0, 1, or 2
+  retain: true // or true
+};
+		
+		www.Publish(message);
 		
         Thing.find({
             owner: decoded._doc.username
