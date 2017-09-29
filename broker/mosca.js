@@ -14,11 +14,11 @@ module.exports = (httpServer) => {
     server.attachHttpServer(httpServer);
     server.on('ready', () => {
 		console.log('mosca server is up and running on port ' + mqttPort);
-    });
+	});
     server.on('error', (error) => {
         console.log('error: ', error);
-    });
-
+	});
+	
 	//var auth = new mosca.Authorizer();
 	
 	// Accepts the connection if the username and password are valid
@@ -35,13 +35,13 @@ module.exports = (httpServer) => {
 				callback(null, false);
 				return;
 			}  
-			if (username == things.username && password == things.password)	{
+			if (username == things.config.username && password == things.config.password)	{
 				console.log('Successful MQTT credintial. Client ID:' + client.id);
 				callback(null, true);
 				return;
 			}
 			else {
-				console.log('Unsuccessful MQTT credintial. Client ID:' + client.id);
+				console.log('Unsuccessful MQTT credintial. Client ID:' + client.id + '  ,Username:' + username + '  ,Password:' + password);
 				callback(null, false);	
 			}
 		});
@@ -51,16 +51,17 @@ module.exports = (httpServer) => {
 	// In this case the client authorized as alice can publish to /users/alice taking
 	// the username from the topic and verifing it is the same of the authorized user
 	var authorizePublish = function(client, topic, payload, callback) {
+		console.log(client.user);
 		callback(null, client.user == topic.split('/')[1]);
 	}
-
+	
 	// In this case the client authorized as alice can subscribe to /users/alice taking
 	// the username from the topic and verifing it is the same of the authorized user
 	var authorizeSubscribe = function(client, topic, callback) {
 		callback(null, client.user == topic.split('/')[1]);
 	}
-
-
+	
+	
 	server.authenticate = authenticate;
 	server.authorizePublish = authorizePublish;
 	server.authorizeSubscribe = authorizeSubscribe;
@@ -74,9 +75,9 @@ module.exports = (httpServer) => {
     server.on('published', (packet, client) => {
         if (!packet.topic.startsWith('$SYS/')) {
             events.onPublished(packet, client);
-        }
-    });
+		}
+	});
 	
-
+	
     return server;
 };

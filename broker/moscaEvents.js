@@ -24,5 +24,7 @@ module.exports.onDelivered = (packet, client) => {
     debug('delivered to ' + client.id + ' on ' + packet.topic + ': ' + packet.payload);
 };
 module.exports.onPublished = (packet, client) => {
-    debug('new message by ' + client.id + ' on ' + packet.topic + ': ' + packet.payload);
+	console.log("onPub");
+	console.log(client);
+    //debug('new message by ' + client.id + ' on ' + packet.topic + ': ' + packet.payload);
 };

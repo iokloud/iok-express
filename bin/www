@@ -26,6 +26,15 @@ const mosca = require('../broker/mosca.js')(server);
  * Listen on provided port, on all network interfaces.
  */
 
+ 
+exports.Publish = function(message)	{
+mosca.publish(message, function() {
+  console.log('done!');
+});
+	
+}
+
+ 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
