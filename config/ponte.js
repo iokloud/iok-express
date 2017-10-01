@@ -1,13 +1,12 @@
-var ponte = require('ponte');
 
 module.exports = {
   id: 'ioboard', // used to publish in the $SYS/<id> topicspace
   stats: false, // publish stats in the $SYS/<id> topicspace
   http: {
-    port: 3002 // tcp
+    port: 3000 // tcp
   },
   mqtt: {
-    port: 3001 // tcp
+    port: 1883 // tcp
   },
   coap: {
     port: 3003 // udp

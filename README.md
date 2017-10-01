@@ -4,20 +4,20 @@
 
 ## About
 
-#### [Are being completed... It's in test]
 
-#### iok-express is IoT platform based on node.js, expressjs, passportjs, mosca and mongodb.
+#### iok-express is IoT platform based on node.js, expressjs, passportjs, mosca, ponte and mongodb.
 
 The purpose of any IoT device is to connect with other IoT devices and applications to relay information using internet transfer protocols. The gap between the device sensors and data networks is filled by an IoT Platform.
 
 IOK Express will enable you to put your IoT API services on your own server simply and painless in one command. It supports the popular MQTT protocol in sync with HTTP. It is in javascript so you can create your own features in expressjs middleware or add your favor database. when the new thing add to database, it add to the credential list of mqtt broker too.
 
+IOK-Express is based on Ponte and is under development so it should work. It need time to release stable version.
 
 
 ## Features
 
 * Simple and Scalable.
-* HTTP and MQTT connections together.
+* HTTP and MQTT connections together as a bridge.
 * MQTT 3.1 and 3.1.1 compliant.
 * Sercured with authentication and JWT.
 * Usable inside ANY other Node.js app.
@@ -38,16 +38,12 @@ cd iok-express
 npm install
 ```
 
-for runing api service you can use one of these commands
+For runing api service;
 
 ``` bash
 npm start
 ```
 
-or
-```bash
-nodemon server.js
-```
 
 
 
@@ -82,7 +78,6 @@ GET http://localhost:3000/api/thing/
 
 ### Learn more
 
-
 You can find a test version of iok-express at test.iokloud.com as soon as possible.
 
 If you find iok-express useful, consider supporting the project by buying a support package
@@ -106,6 +101,7 @@ Use the [issue tracker](https://github.com/iokloud/iok-express/issues) for bugs.
 ## Links
 
 * [Mosca](http://github.com/mcollina/mosca)
+* [Ponte] (https://github.com/eclipse/ponte)
 * [Expressjs](https://expressjs.com/)
 * [Mongodb](https://www.mongodb.com/)
 * [Passport](http://passportjs.org/)
