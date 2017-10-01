@@ -89,7 +89,7 @@ page! Feel free to add yourself! :)
 ## Security Issues
 
 __IOK-Express__ sits between your system and the devices: this is a tough role, and we did our best to secure your systems.
-However, you might find a security issue: in that case, email @iokoud at iokloud.com@gmail.com
+However, you might find a security issue: in that case, email @iokloud at iokloud.com@gmail.com
 
 
 ## Feedback
@@ -101,7 +101,7 @@ Use the [issue tracker](https://github.com/iokloud/iok-express/issues) for bugs.
 ## Links
 
 * [Mosca](http://github.com/mcollina/mosca)
-* [Ponte] (https://github.com/eclipse/ponte)
+* [Ponte](https://github.com/eclipse/ponte)
 * [Expressjs](https://expressjs.com/)
 * [Mongodb](https://www.mongodb.com/)
 * [Passport](http://passportjs.org/)
