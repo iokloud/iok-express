@@ -7,8 +7,6 @@
 
 #### iok-express is IoT platform based on node.js, expressjs, passportjs, mosca, ponte and mongodb.
 
-The purpose of any IoT device is to connect with other IoT devices and applications to relay information using internet transfer protocols. The gap between the device sensors and data networks is filled by an IoT Platform.
-
 IOK Express will enable you to put your IoT API services on your own server simply and painless in one command. It supports the popular MQTT protocol in sync with HTTP. It is in javascript so you can create your own features in expressjs middleware or add your favor database. when the new thing add to database, it add to the credential list of mqtt broker too.
 
 IOK-Express is based on Ponte and is under development so it should work. It need time to release stable version.
