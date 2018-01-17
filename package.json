@@ -1,6 +1,6 @@
 {
 	"name": "iok-express",
-	"version": "0.1.4",
+	"version": "0.1.5",
 	"description": "Open Source IoT Platform for Creating IoT Cloud Service",
 	"main": "./lib/iokloud",
 	"scripts": {
@@ -50,5 +50,16 @@
 		"corsify": "~2.1.0"
 	},
 	"author": "Hadi Mahdavi <iokloud.com@gmail.com>",
-	"license": "MIT"
+	"license": "MIT",
+	"keywords": [
+		"ioKloud",
+		"IoT",
+		"IoT Platform",
+		"Broker",
+		"mqtt",
+		"Http",
+		"CoAP",
+		"publish/subscribe",
+		"publish",
+		"subscribe"]
 }
